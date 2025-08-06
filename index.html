@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Wellness</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <h1 class="app-title">
+                        <i class="fas fa-leaf"></i>
+                        Daily Wellness
+                    </h1>
+                    <div class="date-display">
+                        <i class="fas fa-calendar-day"></i>
+                        <span id="current-date">Tuesday, August 05, 2025</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="navigation">
+            <div class="container">
+                <div class="nav-tabs">
+                    <button class="nav-tab active" data-tab="wellness">
+                        <i class="fas fa-heart"></i>
+                        Daily Wellness
+                    </button>
+                    <button class="nav-tab" data-tab="routine">
+                        <i class="fas fa-clock"></i>
+                        Morning Routine
+                    </button>
+                    <button class="nav-tab" data-tab="journal">
+                        <i class="fas fa-book"></i>
+                        Journal
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <!-- Daily Wellness Tab -->
+                <section id="wellness-tab" class="tab-content active">
+                    <div class="wellness-grid">
+                        <!-- Motivational Quote Card -->
+                        <div class="card wellness-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-quote-left"></i> Today's Quote</h3>
+                                <button class="refresh-btn" data-type="quote">
+                                    <i class="fas fa-sync-alt"></i>
+                                </button>
+                            </div>
+                            <div class="card__body">
+                                <blockquote id="daily-quote" class="quote-text">
+                                    The greatest wealth is health. - Virgil
+                                </blockquote>
+                            </div>
+                        </div>
+
+                        <!-- Journal Prompts Card -->
+                        <div class="card wellness-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-pen-fancy"></i> Journal Prompts</h3>
+                                <button class="refresh-btn" data-type="prompts">
+                                    <i class="fas fa-sync-alt"></i>
+                                </button>
+                            </div>
+                            <div class="card__body">
+                                <div id="journal-prompts" class="prompts-list">
+                                    <div class="prompt-item">
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span>How do I want to feel when I go to bed tonight?</span>
+                                    </div>
+                                    <div class="prompt-item">
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span>What are three things I am grateful for today?</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Inspiration Card -->
+                        <div class="card wellness-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-star"></i> Spark of Inspiration</h3>
+                                <button class="refresh-btn" data-type="inspiration">
+                                    <i class="fas fa-sync-alt"></i>
+                                </button>
+                            </div>
+                            <div class="card__body">
+                                <p id="daily-inspiration" class="inspiration-text">
+                                    Today is a new day, so rise up and move forward. Each morning brings new potential, but it's up to you to bring it to life.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Morning Routine Summary Card -->
+                        <div class="card wellness-card routine-summary">
+                            <div class="card-header">
+                                <h3><i class="fas fa-sun"></i> Morning Routine Overview</h3>
+                            </div>
+                            <div class="card__body">
+                                <div id="routine-summary" class="routine-steps">
+                                    <div class="routine-step">
+                                        <i class="fas fa-bed"></i>
+                                        <span>Set a consistent wake-up time and wake gently with a melodic alarm</span>
+                                    </div>
+                                    <div class="routine-step">
+                                        <i class="fas fa-tint"></i>
+                                        <span>Drink a glass of water first thing to rehydrate after sleep</span>
+                                    </div>
+                                    <div class="routine-step">
+                                        <i class="fas fa-running"></i>
+                                        <span>Light stretching, yoga, or a short walk to activate the body</span>
+                                    </div>
+                                    <div class="routine-step">
+                                        <i class="fas fa-om"></i>
+                                        <span>5-10 minutes of meditation, deep breathing, or gratitude practice</span>
+                                    </div>
+                                    <div class="routine-step">
+                                        <i class="fas fa-apple-alt"></i>
+                                        <span>Healthy breakfast with protein, healthy fats, and complex carbs</span>
+                                    </div>
+                                    <div class="routine-step">
+                                        <i class="fas fa-bullseye"></i>
+                                        <span>Set 3 priorities for the day and reflect on your goals</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Morning Routine Tab -->
+                <section id="routine-tab" class="tab-content">
+                    <div class="routine-container">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-stopwatch"></i> Morning Routine Timer</h3>
+                                <div class="progress-indicator">
+                                    <span id="completed-steps">0</span> / <span id="total-steps">6</span> completed
+                                </div>
+                            </div>
+                            <div class="card__body">
+                                <div class="timer-display">
+                                    <div id="current-timer" class="timer">
+                                        <span id="timer-minutes">00</span>:<span id="timer-seconds">00</span>
+                                    </div>
+                                    <div class="timer-controls">
+                                        <button id="start-timer" class="btn btn--primary">
+                                            <i class="fas fa-play"></i> Start
+                                        </button>
+                                        <button id="pause-timer" class="btn btn--secondary">
+                                            <i class="fas fa-pause"></i> Pause
+                                        </button>
+                                        <button id="reset-timer" class="btn btn--outline">
+                                            <i class="fas fa-redo"></i> Reset
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="routine-checklist">
+                                    <div class="routine-item" data-time="5">
+                                        <input type="checkbox" id="step1" class="routine-checkbox">
+                                        <label for="step1" class="routine-label">
+                                            <i class="fas fa-bed"></i>
+                                            <span class="step-title">Wake Up Gently</span>
+                                            <span class="step-time">5 min</span>
+                                        </label>
+                                    </div>
+                                    <div class="routine-item" data-time="5">
+                                        <input type="checkbox" id="step2" class="routine-checkbox">
+                                        <label for="step2" class="routine-label">
+                                            <i class="fas fa-tint"></i>
+                                            <span class="step-title">Hydration</span>
+                                            <span class="step-time">5 min</span>
+                                        </label>
+                                    </div>
+                                    <div class="routine-item" data-time="20">
+                                        <input type="checkbox" id="step3" class="routine-checkbox">
+                                        <label for="step3" class="routine-label">
+                                            <i class="fas fa-running"></i>
+                                            <span class="step-title">Movement</span>
+                                            <span class="step-time">15-20 min</span>
+                                        </label>
+                                    </div>
+                                    <div class="routine-item" data-time="15">
+                                        <input type="checkbox" id="step4" class="routine-checkbox">
+                                        <label for="step4" class="routine-label">
+                                            <i class="fas fa-om"></i>
+                                            <span class="step-title">Mindfulness</span>
+                                            <span class="step-time">10-15 min</span>
+                                        </label>
+                                    </div>
+                                    <div class="routine-item" data-time="25">
+                                        <input type="checkbox" id="step5" class="routine-checkbox">
+                                        <label for="step5" class="routine-label">
+                                            <i class="fas fa-apple-alt"></i>
+                                            <span class="step-title">Nourishment</span>
+                                            <span class="step-time">20-25 min</span>
+                                        </label>
+                                    </div>
+                                    <div class="routine-item" data-time="10">
+                                        <input type="checkbox" id="step6" class="routine-checkbox">
+                                        <label for="step6" class="routine-label">
+                                            <i class="fas fa-bullseye"></i>
+                                            <span class="step-title">Intention Setting</span>
+                                            <span class="step-time">5-10 min</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Journal Tab -->
+                <section id="journal-tab" class="tab-content">
+                    <div class="journal-container">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-feather-alt"></i> Your Journal Space</h3>
+                                <button id="clear-journal" class="btn btn--outline btn--sm">
+                                    <i class="fas fa-eraser"></i> Clear
+                                </button>
+                            </div>
+                            <div class="card__body">
+                                <div class="journal-prompts-ref">
+                                    <h4>Today's Prompts:</h4>
+                                    <div id="journal-prompts-display" class="journal-prompt-list">
+                                        <p><i class="fas fa-arrow-right"></i> How do I want to feel when I go to bed tonight?</p>
+                                        <p><i class="fas fa-arrow-right"></i> What are three things I am grateful for today?</p>
+                                    </div>
+                                </div>
+                                <div class="journal-writing-area">
+                                    <textarea 
+                                        id="journal-text" 
+                                        class="form-control journal-textarea" 
+                                        placeholder="Start writing your thoughts here..."
+                                        rows="12"
+                                    ></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p class="footer-message">
+                    <i class="fas fa-sparkles"></i>
+                    Remember: Small steps lead to big changes. You've got this! 
+                    <i class="fas fa-heart"></i>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
